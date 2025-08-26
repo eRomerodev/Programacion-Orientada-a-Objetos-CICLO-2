@@ -40,16 +40,66 @@ class Biblioteca {
     // M É T O D O S    D E    L A    L I B R E R í A
 
     void agregar_libro(const Libro& nuevoLibro) {
+
         libros.push_back(nuevoLibro);
         std::cout << "El libro ha sido agregado a la librería exitosamente :)" << std::endl;
+
+        bool existe = false;
+
+        for (const auto& libro : libros) {
+            if (libro.titulo == nuevoLibro.titulo) {
+                existe = true;
+                break;
+            }
+        }
+
+        if (existe) {
+            std::cout << "Ese libro ya se encuentra en la biblioteca :O, no es necesario agregarlo." << std::endl;
+        } else {
+            libros.push_back(nuevoLibro);
+            std::cout << "El libro ha sido agregado a la librería exitosamente :)" << std::endl;
+        }
     }
     
-    void mostrar_inventario() {
-        std::cout << "....." << std::endl;
-        std::cout << "Los libros en la biblioteca son: " << std::endl;
-        for (auto& libro : libros) {
-            libro.mostrarDetallesCompletos();
-        };
+            void mostrar_inventario() {
+            std::cout << "....." << std::endl;
+            std::cout << "Los libros en la biblioteca son: " << std::endl;
+            for (auto& libro : libros) {
+                libro.mostrarDetallesCompletos();
+            }
+        }
+
+        Libro* buscarLibro(const std::string& tituloBuscado) {
+            for (auto& libro : libros) {
+                if (libro.titulo == tituloBuscado) {
+                    return &libro;
+                }
+            }
+            return nullptr;
+            }
+        
+        void prestarLibro(const std::string& tituloPrestamo) {
+            Libro* libro = buscarLibro(tituloPrestamo);
+            if (libro == nullptr) {
+                std::cout << "El libro '" << tituloPrestamo << "' no se encuentra en la biblioteca." << std::endl;
+            } else if (!libro->estadisponible) {
+                std::cout << "El libro '" << tituloPrestamo << "' ya está prestado." << std::endl;
+            } else {
+                libro->estadisponible = false;
+                std::cout << "El libro '" << tituloPrestamo << "' ha sido prestado exitosamente." << std::endl;
+        }
+    }
+
+    void devolverLibro(const std::string& tituloDevolucion) {
+         Libro* libro = buscarLibro(tituloDevolucion);
+            if (libro == nullptr or libro->estadisponible = true) {
+                std::cout << "El libro '" << tituloDevolucion << "' no se encuentra en la biblioteca." << std::endl;
+            } else if (!libro->estadisponible) {
+                std::cout << "El libro '" << tituloDevolucion << "' ya está prestado." << std::endl;
+            } else {
+                libro->estadisponible = false;
+                std::cout << "El libro '" << tituloDevolucion << "' ha sido prestado exitosamente." << std::endl;
+         }
     }
 };
 
@@ -57,6 +107,7 @@ class Biblioteca {
 // M A I N
 
 int main() {
+
     std::vector<Libro> misLibros = {
         Libro("Cien años de soledad", "Gabriel García Márquez", 1967),
         Libro("El Principito", "Antoine de Saint-Exupéry", 1943),
@@ -73,4 +124,4 @@ int main() {
     Biblioteca BiblioKeyTeca(misLibros);
 
     return 0;
-}
+};
