@@ -1,5 +1,4 @@
 // Reto 1. Biblioteca
-    // PSEUDO CÓDIGO
 
 # include <iostream>
 # include <string>
@@ -37,10 +36,26 @@ class Biblioteca {
     public:
         std::vector<Libro> libros;
         Biblioteca(std::vector<Libro>& iniciales) : libros(iniciales) {}
+
+    // M É T O D O S    D E    L A    L I B R E R í A
+
+    void agregar_libro(const Libro& nuevoLibro) {
+        libros.push_back(nuevoLibro);
+        std::cout << "El libro ha sido agregado a la librería exitosamente :)" << std::endl;
+    }
+    
+    void mostrar_inventario() {
+        std::cout << "....." << std::endl;
+        std::cout << "Los libros en la biblioteca son: " << std::endl;
+        for (auto& libro : libros) {
+            libro.mostrarDetallesCompletos();
+        };
+    }
 };
 
 
 // M A I N
+
 int main() {
     std::vector<Libro> misLibros = {
         Libro("Cien años de soledad", "Gabriel García Márquez", 1967),
@@ -55,13 +70,7 @@ int main() {
         Libro("El Hobbit", "J.R.R. Tolkien", 1937)
     };
 
-    Biblioteca miBiblioteca(misLibros);
-
-    // Mostrar detalles de cada libro
-    for (const auto& libro : miBiblioteca.libros) {
-        libro.mostrarDetallesCompletos();
-        std::cout << std::endl;
-    }
+    Biblioteca BiblioKeyTeca(misLibros);
 
     return 0;
 }
