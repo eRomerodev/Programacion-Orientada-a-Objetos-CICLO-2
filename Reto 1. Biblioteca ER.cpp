@@ -91,15 +91,15 @@ class Biblioteca {
     }
 
     void devolverLibro(const std::string& tituloDevolucion) {
-         Libro* libro = buscarLibro(tituloDevolucion);
-            if (libro == nullptr or libro->estadisponible = true) {
+        Libro* libro = buscarLibro(tituloDevolucion);
+            if (libro == nullptr) {
                 std::cout << "El libro '" << tituloDevolucion << "' no se encuentra en la biblioteca." << std::endl;
-            } else if (!libro->estadisponible) {
-                std::cout << "El libro '" << tituloDevolucion << "' ya está prestado." << std::endl;
+            } else if (libro->estadisponible) {
+                std::cout << "El libro '" << tituloDevolucion << "' ya está disponible en la biblioteca." << std::endl;
             } else {
-                libro->estadisponible = false;
-                std::cout << "El libro '" << tituloDevolucion << "' ha sido prestado exitosamente." << std::endl;
-         }
+                libro->estadisponible = true;
+                std::cout << "El libro '" << tituloDevolucion << "' ha sido devuelto exitosamente." << std::endl;
+        }
     }
 };
 
@@ -122,6 +122,55 @@ int main() {
     };
 
     Biblioteca BiblioKeyTeca(misLibros);
+
+    int opcion = 0;
+
+        while (opcion != 5) {
+        std::cout << "\n--- BIBLIOTECA DIGITAL ---" << std::endl;
+        std::cout << "1. Anadir libro" << std::endl;
+        std::cout << "2. Mostrar inventario" << std::endl;
+        std::cout << "3. Prestar libro" << std::endl;
+        std::cout << "4. Devolver libro" << std::endl;
+        std::cout << "5. Salir" << std::endl;
+        std::cout << "..........." << std::endl;
+        std::cout << "Seleccione una opcion: ";
+        std::cin >> opcion;
+
+        if (opcion == 1) {
+            std::string titulo, autor;
+            int anopublicacion;
+
+            std::cout << "Titulo: ";
+            std::getline(std::cin >> std::ws, titulo);
+
+            std::cout << "Autor: ";
+            std::getline(std::cin >> std::ws, autor);
+
+            std::cout << "Año de publicación: ";
+            std::cin >> anopublicacion;
+
+            Libro nuevoLibro(titulo, autor, anopublicacion);
+            BiblioKeyTeca.agregar_libro(nuevoLibro);
+        }
+
+        if (opcion == 2) {
+            BiblioKeyTeca.mostrar_inventario();
+        }
+
+        if (opcion == 3) {
+            std::string tituloPrestamo;
+            std::cout << "Ingrese el título del libro a prestar: ";
+            std::getline(std::cin >> std::ws, tituloPrestamo);
+            BiblioKeyTeca.prestarLibro(tituloPrestamo);
+        }
+
+        if (opcion == 4) {
+            std::string tituloDevolucion;
+            std::cout << "Ingrese el título del libro a devolver: ";
+            std::getline(std::cin >> std::ws, tituloDevolucion);
+            BiblioKeyTeca.devolverLibro(tituloDevolucion);
+        }
+    }
 
     return 0;
 };
