@@ -3,7 +3,7 @@
 # include <iostream>
 # include <string>
 # include <vector>
-
+using namespace std;
 // Crear la clase Libro ( L I S T O ! )
 
 class Libro {
