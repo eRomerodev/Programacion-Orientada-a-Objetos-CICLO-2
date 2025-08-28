@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-// Clase base
+// Clase base, ohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 class Vehiculo {
 protected:
     string marca;
@@ -15,7 +15,7 @@ public:
     Vehiculo(string _marca, string _modelo, int _anio, double _precioBase)
         : marca(_marca), modelo(_modelo), anio(_anio), precioBase(_precioBase) {}
 
-    virtual ~Vehiculo() {} // Destructor virtual (buenas prácticas con polimorfismo)
+    virtual ~Vehiculo() {} // Destructor virtual 
 
     virtual double calcularPrecioFinal() const = 0; // Método abstracto
 
@@ -28,7 +28,7 @@ public:
     }
 };
 
-// Clase derivada Auto
+// Clase derivada Auto, six seven
 class Auto : public Vehiculo {
 private:
     int numeroPuertas;
@@ -48,7 +48,7 @@ public:
     }
 };
 
-// Clase derivada Moto
+// Clase derivada Moto, six seven
 class Moto : public Vehiculo {
 private:
     int cilindrada;
