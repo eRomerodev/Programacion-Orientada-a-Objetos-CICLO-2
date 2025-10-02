@@ -1,8 +1,5 @@
 # Programacion-Orientada-a-Objetos-CICLO-2
 
-¡Claro\! Aquí tienes el contenido completo del archivo `README.md` listo para que lo copies y pegues en tu repositorio de GitHub.
-
-
 # 📚 Sistema de Gestión de Biblioteca (C++)
 
 Este proyecto implementa un sistema básico de gestión de una base de datos de biblioteca en C++. Utiliza estructuras de datos en memoria (`std::vector`) para almacenar la información de autores, libros, estudiantes y préstamos, y garantiza la persistencia de los datos mediante el guardado y la carga en archivos de texto plano (`.txt`).
