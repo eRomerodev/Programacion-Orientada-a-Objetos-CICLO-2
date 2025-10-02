@@ -9,6 +9,8 @@
 #include <string>
 using namespace std;
 
+// Emiliano Romero 
+
 // ------------------- Estructuras -------------------
 struct Autor { int id; string nombre; string nacionalidad; };
 struct Libro { int id; string titulo; string isbn; int ano; int id_autor; };
@@ -29,6 +31,7 @@ public:
         while(getline(ss,item,delim)) v.push_back(item);
         return v;
     }
+
 
     // ------------------- Persistencia -------------------
     void cargarAutores(){ autores.clear(); ifstream f("autores.txt"); string line;
